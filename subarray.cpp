@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
+#include <unordered_map>
 
 int max(int a, int b){
 	if (a>b){
@@ -49,4 +51,32 @@ int divide_subarray_into_equal(int arr[], int size){
 	}
 	printf ("Array cannot be divided into subarray of equal sum\n");
 	return 0;
+}
+
+/*Program to find all subarrays which sum zero*/
+vector<pair<int, int> > subarray_with_sum_zero(int arr, int size){
+	unordered_map <int, vector<int>> map;
+	
+	vector<pair<int, int>> out;
+	
+	int sum =0;
+	
+	for (int i=0;i<size;i++){
+		sum += arr[i];
+		
+		if (sum == 0){
+			out.push_back(make_pair(0, i));
+		}
+		
+		if (map.find(sum) != map.end()){
+			vector<int> vc = map[sum];
+			
+			for(auto it=vc.begin(); it!=vc.end(); it++){
+				out.push(make_pair(*it+1, i);
+			}
+		}
+		map[sum].push_back(i);
+	}
+	
+	return out;
 }
