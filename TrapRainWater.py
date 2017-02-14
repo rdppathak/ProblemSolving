@@ -12,6 +12,7 @@ def calculate_water_trapped(arr):
 		if (arr[i]>leftmax):
 			leftmax=arr[i]
 
+	print "Track Left ", track_left
 	rightmax = 0
 	for i in xrange(array_size):
 		track_right[array_size-i-1] = rightmax
@@ -19,6 +20,7 @@ def calculate_water_trapped(arr):
 		if (arr[array_size-i-1] > rightmax):
 			rightmax = arr[array_size-i-1]
 
+	print "Track Right ", track_right
 
 	trapped_quantity = 0
 	for i in xrange(array_size):
@@ -28,6 +30,7 @@ def calculate_water_trapped(arr):
 
 def main():
 	arr= [0,1,0,2,1,0,1,3,2,1,2,1]
+	
 	calculate_water_trapped(arr)
 
 if __name__ == '__main__':

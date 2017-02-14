@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 
+using namespace std;
 int max(int a, int b){
 	if (a>b){
 		return a;
@@ -23,7 +24,7 @@ int largest_product_subarray(int arr[], int size, int k){
 	
 	prev_product = max_product;
 	int product_so_far;
-	for (int i=1;i<(n-k);i++){
+	for (int i=1;i<(size-k);i++){
 		product_so_far = (prev_product/arr[i-1])*arr[i+k-1];
 		max_product = max(prev_product, product_so_far);
 		prev_product = product_so_far;		
@@ -54,7 +55,7 @@ int divide_subarray_into_equal(int arr[], int size){
 }
 
 /*Program to find all subarrays which sum zero*/
-vector<pair<int, int> > subarray_with_sum_zero(int arr, int size){
+std::vector<pair<int, int>> subarray_with_sum_zero(int arr[], int size){
 	unordered_map <int, vector<int>> map;
 	
 	vector<pair<int, int>> out;
@@ -72,11 +73,16 @@ vector<pair<int, int> > subarray_with_sum_zero(int arr, int size){
 			vector<int> vc = map[sum];
 			
 			for(auto it=vc.begin(); it!=vc.end(); it++){
-				out.push(make_pair(*it+1, i);
+				out.push_back(make_pair(*it+1, i));
 			}
 		}
 		map[sum].push_back(i);
 	}
 	
 	return out;
+}
+
+
+int main(){
+	return 0;
 }
